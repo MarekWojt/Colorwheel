@@ -3,3 +3,4 @@ classTweaker v1 official
 # Minecraft 26.1 is unobfuscated; these members are widened so Colorwheel can read the
 # render state the same way Create-Fly's bundled Flywheel does.
 accessible field net/minecraft/client/renderer/LevelRenderer ticks I
+accessible method net/minecraft/client/player/AbstractClientPlayer getPlayerInfo ()Lnet/minecraft/client/multiplayer/PlayerInfo;

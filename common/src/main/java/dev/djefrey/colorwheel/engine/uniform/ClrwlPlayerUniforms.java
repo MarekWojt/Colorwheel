@@ -3,9 +3,9 @@ package dev.djefrey.colorwheel.engine.uniform;
 import com.zurrtum.create.client.flywheel.api.backend.RenderContext;
 import com.zurrtum.create.client.flywheel.backend.FlwBackendXplat;
 import com.zurrtum.create.client.flywheel.backend.engine.uniform.UniformBuffer;
-import com.zurrtum.create.client.flywheel.backend.mixin.AbstractClientPlayerAccessor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.world.level.Level;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
@@ -38,7 +38,7 @@ public final class ClrwlPlayerUniforms extends UniformWriter
 
 		long ptr = BUFFER.ptr();
 
-		PlayerInfo info = ((AbstractClientPlayerAccessor) player).flywheel$getPlayerInfo();
+		PlayerInfo info = player.getPlayerInfo();
 
 		Vec3 eyePos = player.getEyePosition(context.partialTick());
 		ptr = writeVec3(ptr, (float) eyePos.x, (float) eyePos.y, (float) eyePos.z);
@@ -89,10 +89,10 @@ public final class ClrwlPlayerUniforms extends UniformWriter
 
 	private static long writeEyeBrightness(long ptr, LocalPlayer player)
 	{
-		ClientLevel level = player.clientLevel;
+		Level level = player.level();
 		int blockBrightness = level.getBrightness(LightLayer.BLOCK, player.blockPosition());
 		int skyBrightness = level.getBrightness(LightLayer.SKY, player.blockPosition());
-		int maxBrightness = level.getMaxLightLevel();
+		int maxBrightness = 15;
 
 		return writeVec2(ptr, (float) blockBrightness / (float) maxBrightness,
 				(float) skyBrightness / (float) maxBrightness);
@@ -109,7 +109,7 @@ public final class ClrwlPlayerUniforms extends UniformWriter
 			{
 				Block block = blockItem.getBlock();
 				int blockLight = FlwBackendXplat.INSTANCE
-						.getLightEmission(block.defaultBlockState(), player.clientLevel, player.blockPosition());
+						.getLightEmission(block.defaultBlockState(), player.level(), player.blockPosition());
 				if (heldLight < blockLight)
 				{
 					heldLight = blockLight;
@@ -122,7 +122,7 @@ public final class ClrwlPlayerUniforms extends UniformWriter
 
 	private static long writeEyeIn(long ptr, LocalPlayer player)
 	{
-		ClientLevel level = player.clientLevel;
+		Level level = player.level();
 		Vec3 eyePos = player.getEyePosition();
 		BlockPos blockPos = BlockPos.containing(eyePos);
 		return writeInFluidAndBlock(ptr, level, blockPos, eyePos);

@@ -18,11 +18,11 @@ public class ClrwlSamplers
 
 	public static GlTextureUnit getAccumulate(int idx)
 	{
-		return GlTextureUnit.fromGlEnum(GlTextureUnit.T0.glEnum + idx);
+		return GlTextureUnit.fromActiveTexture(GlTextureUnit.T0.glEnum + idx);
 	}
 
 	public static GlTextureUnit getCoefficient(int idx)
 	{
-		return GlTextureUnit.fromGlEnum(FIRST_COEFFICIENT.glEnum + idx);
+		return GlTextureUnit.fromActiveTexture(FIRST_COEFFICIENT.glEnum + idx);
 	}
 }

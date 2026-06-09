@@ -599,8 +599,8 @@ public class ClrwlInstancedDrawManager extends ClrwlDrawManager<ClrwlInstancedIn
 					.withStyle(
 						Style.EMPTY
 							.withUnderlined(true)
-							.withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/colorwheel alertBrokenPack off"))
-							.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("colorwheel.alert.broken_pack.disable")))
+							.withClickEvent(new ClickEvent.SuggestCommand("/colorwheel alertBrokenPack off"))
+							.withHoverEvent(new HoverEvent.ShowText(Component.translatable("colorwheel.alert.broken_pack.disable")))
 					);
 
 			Colorwheel.sendWarnMessage(disableComp, false);

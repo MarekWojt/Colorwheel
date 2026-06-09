@@ -5,7 +5,6 @@ import com.zurrtum.create.client.flywheel.api.backend.RenderContext;
 import com.zurrtum.create.client.flywheel.api.visualization.VisualizationManager;
 import com.zurrtum.create.client.flywheel.backend.engine.indirect.DepthPyramid;
 import com.zurrtum.create.client.flywheel.backend.engine.uniform.UniformBuffer;
-import com.zurrtum.create.client.flywheel.backend.mixin.LevelRendererAccessor;
 import net.minecraft.util.Util;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -176,7 +175,7 @@ public final class ClrwlShadowFrameUniforms extends UniformWriter
 	}
 
 	private static long writeTime(long ptr, RenderContext context) {
-		int ticks = ((LevelRendererAccessor) context.renderer()).flywheel$getTicks();
+		int ticks = context.renderer().ticks;
 		float partialTick = context.partialTick();
 		float renderTicks = ticks + partialTick;
 		float renderSeconds = renderTicks / 20f;

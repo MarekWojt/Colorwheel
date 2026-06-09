@@ -65,8 +65,8 @@ public class ClrwlEngine implements ExtendedEngine
 	{
 		ClientLevel clientLevel = (ClientLevel) level;
 		this.level = level;
-		this.dimension = new NamespacedId(clientLevel.dimension().location().getNamespace(),
-										  clientLevel.dimension().location().getPath());
+		this.dimension = new NamespacedId(clientLevel.dimension().identifier().getNamespace(),
+										  clientLevel.dimension().identifier().getPath());
 
 		this.pack = Iris.getCurrentPack().orElseThrow();
 
@@ -102,7 +102,7 @@ public class ClrwlEngine implements ExtendedEngine
 	@Override
 	public boolean updateRenderOrigin(Camera camera)
 	{
-		Vec3 cameraPos = camera.getPosition();
+		Vec3 cameraPos = camera.position();
 		double dx = renderOrigin.getX() - cameraPos.x;
 		double dy = renderOrigin.getY() - cameraPos.y;
 		double dz = renderOrigin.getZ() - cameraPos.z;

@@ -1,3 +1,8 @@
+loom {
+    // 26.1 access widener (shared by the fabric module and declared in fabric.mod.json).
+    accessWidenerPath = file("src/main/resources/colorwheel.classtweaker")
+}
+
 dependencies {
     // Fabric Loader provides the @Environment annotations used across the loader-agnostic core.
     implementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"

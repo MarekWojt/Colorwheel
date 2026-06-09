@@ -6,7 +6,7 @@ import com.zurrtum.create.client.flywheel.api.visualization.VisualizationManager
 import com.zurrtum.create.client.flywheel.backend.engine.indirect.DepthPyramid;
 import com.zurrtum.create.client.flywheel.backend.engine.uniform.UniformBuffer;
 import com.zurrtum.create.client.flywheel.backend.mixin.LevelRendererAccessor;
-import net.minecraft.Util;
+import net.minecraft.util.Util;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
@@ -84,8 +84,8 @@ public final class ClrwlShadowFrameUniforms extends UniformWriter
 		VIEW_PROJECTION.translate(-camX, -camY, -camZ);
 
 		CAMERA_POS.set(camX, camY, camZ);
-		CAMERA_LOOK.set(camera.getLookVector());
-		CAMERA_ROT.set(camera.getXRot(), camera.getYRot());
+		CAMERA_LOOK.set(camera.forwardVector());
+		CAMERA_ROT.set(camera.xRot(), camera.yRot());
 		
 		Matrix4f normal = new Matrix4f(context.modelView())
 				.translate(-camX, -camY, -camZ)
@@ -118,7 +118,7 @@ public final class ClrwlShadowFrameUniforms extends UniformWriter
 		ptr = writeFloat(ptr, (float) window.getWidth() / (float) window.getHeight());
 		// default line width: net.minecraft.client.renderer.RenderStateShard.LineStateShard
 		ptr = writeFloat(ptr, Math.max(2.5F, (float) window.getWidth() / 1920.0F * 2.5F));
-		ptr = writeFloat(ptr, Minecraft.getInstance().gameRenderer.getDepthFar());
+		ptr = writeFloat(ptr, Minecraft.getInstance().gameRenderer.getGameRenderState().levelRenderState.cameraRenderState.depthFar);
 
 		ptr = writeTime(ptr, context);
 
@@ -199,9 +199,9 @@ public final class ClrwlShadowFrameUniforms extends UniformWriter
 			return ptr;
 		}
 
-		Level level = camera.getEntity().level();
-		BlockPos blockPos = camera.getBlockPosition();
-		Vec3 cameraPos = camera.getPosition();
+		Level level = camera.entity().level();
+		BlockPos blockPos = camera.blockPosition();
+		Vec3 cameraPos = camera.position();
 		return writeInFluidAndBlock(ptr, level, blockPos, cameraPos);
 	}
 
@@ -213,8 +213,8 @@ public final class ClrwlShadowFrameUniforms extends UniformWriter
 		int pyramidHeight = DepthPyramid.mip0Size(mainRenderTarget.height);
 		int pyramidDepth = DepthPyramid.getImageMipLevels(pyramidWidth, pyramidHeight);
 
-		ptr = writeFloat(ptr, GameRenderer.PROJECTION_Z_NEAR); // zNear
-		ptr = writeFloat(ptr, mc.gameRenderer.getDepthFar()); // zFar
+		ptr = writeFloat(ptr, 0.05F); // zNear
+		ptr = writeFloat(ptr, mc.gameRenderer.getGameRenderState().levelRenderState.cameraRenderState.depthFar); // zFar
 		ptr = writeFloat(ptr, PROJECTION.m00()); // P00
 		ptr = writeFloat(ptr, PROJECTION.m11()); // P11
 		ptr = writeFloat(ptr, pyramidWidth); // pyramidWidth

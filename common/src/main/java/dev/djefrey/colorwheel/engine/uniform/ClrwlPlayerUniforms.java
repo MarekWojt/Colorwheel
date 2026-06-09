@@ -9,7 +9,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.PlayerInfo;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.FastColor;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -71,9 +71,9 @@ public final class ClrwlPlayerUniforms extends UniformWriter
 
 			if (color != null)
 			{
-				int red = FastColor.ARGB32.red(color);
-				int green = FastColor.ARGB32.green(color);
-				int blue = FastColor.ARGB32.blue(color);
+				int red = ARGB.red(color);
+				int green = ARGB.green(color);
+				int blue = ARGB.blue(color);
 				return writeVec4(ptr, red / 255f, green / 255f, blue / 255f, 1f);
 			}
 			else

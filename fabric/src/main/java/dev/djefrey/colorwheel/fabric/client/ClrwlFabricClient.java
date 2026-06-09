@@ -9,7 +9,7 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallba
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public final class ClrwlFabricClient implements ClientModInitializer
 {
@@ -21,7 +21,7 @@ public final class ClrwlFabricClient implements ClientModInitializer
             ClientCommandRegistrationCallback.EVENT.register(ClrwlCommandsFabric::registerClientCommands);
         }
 
-        ResourceLocation latePhase = Colorwheel.rl("late");
+        Identifier latePhase = Colorwheel.rl("late");
 
         if (ClrwlFabric.hasPonder())
         {

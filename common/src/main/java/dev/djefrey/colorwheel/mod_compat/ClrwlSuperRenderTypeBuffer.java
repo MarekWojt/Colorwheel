@@ -8,7 +8,7 @@ import com.zurrtum.create.client.catnip.render.SuperRenderTypeBuffer;
 import net.irisshaders.batchedentityrendering.impl.FullyBufferedMultiBufferSource;
 import net.irisshaders.batchedentityrendering.impl.TransparencyType;
 import net.irisshaders.iris.shaderpack.materialmap.WorldRenderingSettings;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderType;
 
 public class ClrwlSuperRenderTypeBuffer implements SuperRenderTypeBuffer
 {

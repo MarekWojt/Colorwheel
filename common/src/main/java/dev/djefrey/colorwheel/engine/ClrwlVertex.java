@@ -6,7 +6,7 @@ import com.zurrtum.create.client.flywheel.api.layout.Layout;
 import com.zurrtum.create.client.flywheel.api.layout.LayoutBuilder;
 import com.zurrtum.create.client.flywheel.backend.LayoutAttributes;
 import com.zurrtum.create.client.flywheel.backend.gl.array.VertexAttribute;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public final class ClrwlVertex {
 	public static final List<VertexAttribute> ATTRIBUTES = LayoutAttributes.attributes(LAYOUT);
 	public static final int STRIDE = LAYOUT.byteSize();
 
-	public static final ResourceLocation LAYOUT_SHADER = Colorwheel.rl("internal/vertex_input.vert");
+	public static final Identifier LAYOUT_SHADER = Colorwheel.rl("internal/vertex_input.vert");
 
 	private ClrwlVertex() {
 	}

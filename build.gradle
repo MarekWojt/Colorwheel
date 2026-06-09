@@ -42,6 +42,7 @@ subprojects {
 
     tasks.withType(JavaCompile).configureEach {
         it.options.release = 25
+        it.options.compilerArgs.addAll(['-Xmaxerrs', '2000', '-Xmaxwarns', '2000'])
     }
 
     // Configure Maven publishing.

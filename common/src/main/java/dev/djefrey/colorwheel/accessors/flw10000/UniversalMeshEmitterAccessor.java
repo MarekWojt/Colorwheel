@@ -1,6 +1,6 @@
 package dev.djefrey.colorwheel.accessors.flw10000;
 
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderType;
 
 public interface UniversalMeshEmitterAccessor
 {

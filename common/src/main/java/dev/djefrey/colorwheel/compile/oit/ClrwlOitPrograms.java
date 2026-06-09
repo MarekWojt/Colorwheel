@@ -15,7 +15,7 @@ import com.zurrtum.create.client.flywheel.backend.gl.shader.GlProgram;
 import com.zurrtum.create.client.flywheel.backend.gl.shader.GlShader;
 import com.zurrtum.create.client.flywheel.backend.glsl.ShaderSources;
 import com.zurrtum.create.client.flywheel.backend.glsl.SourceComponent;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.lwjgl.opengl.GL20;
 
 import java.util.*;
@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 
 public class ClrwlOitPrograms
 {
-    private static final ResourceLocation DEPTH = Colorwheel.rl("internal/oit/depth.frag");
+    private static final Identifier DEPTH = Colorwheel.rl("internal/oit/depth.frag");
 
     private final ShaderSources sources;
 

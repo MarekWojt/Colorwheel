@@ -2,7 +2,7 @@ package dev.djefrey.colorwheel.fabric.mixin.flw.v10000;
 
 import dev.djefrey.colorwheel.accessors.flw10000.MeshEmitterAccessor;
 import dev.djefrey.colorwheel.accessors.flw10000.UniversalMeshEmitterAccessor;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;

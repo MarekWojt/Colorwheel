@@ -1,6 +1,6 @@
 package dev.djefrey.colorwheel.engine;
 
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.opengl.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import dev.djefrey.colorwheel.*;
 import dev.djefrey.colorwheel.accessors.iris.IrisRenderingPipelineAccessor;
@@ -24,6 +24,10 @@ import net.irisshaders.iris.shadows.ShadowRenderTargets;
 import net.irisshaders.iris.targets.RenderTargets;
 import net.minecraft.client.Minecraft;
 import org.jetbrains.annotations.Nullable;
+import com.mojang.blaze3d.opengl.GlTexture;
+import com.mojang.blaze3d.pipeline.ColorTargetState;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL14;
 import org.lwjgl.opengl.GL32;
 import org.lwjgl.opengl.GL46;
 
@@ -97,7 +101,7 @@ public class ClrwlOitFramebuffers
             for (int i = 0; i < coefficients.length; i++)
             {
                 ClrwlSamplers.getCoefficient(i).makeActive();
-                RenderSystem.bindTexture(0);
+                GlStateManager._bindTexture(0);
             }
 
             GL32.glDeleteTextures(coefficients);
@@ -123,7 +127,7 @@ public class ClrwlOitFramebuffers
         }
 
         ClrwlSamplers.DEPTH_RANGE.makeActive();
-        RenderSystem.bindTexture(0);
+        GlStateManager._bindTexture(0);
     }
 
     /**
@@ -144,16 +148,16 @@ public class ClrwlOitFramebuffers
                 ClrwlSamplers.getCoefficient(i).makeActive();
 
                 // Bind zero to render system to make sure we clear their internal state
-                RenderSystem.bindTexture(0);
+                GlStateManager._bindTexture(0);
                 GL32.glBindTexture(GL32.GL_TEXTURE_2D_ARRAY, buffer);
             }
         }
 
         ClrwlSamplers.DEPTH_RANGE.makeActive();
-        RenderSystem.bindTexture(depthBounds);
+        GlStateManager._bindTexture(depthBounds);
 
         ClrwlSamplers.NOISE.makeActive();
-        NoiseTextures.BLUE_NOISE.bind();
+        GlStateManager._bindTexture(((GlTexture) NoiseTextures.BLUE_NOISE.getTexture()).glId());
 
         if (coeffsFbo != -1)
         {
@@ -171,13 +175,13 @@ public class ClrwlOitFramebuffers
     public void prepareDepthRange()
     {
         // No depth writes, but we'll still use the depth test.
-        RenderSystem.depthMask(false);
-        RenderSystem.colorMask(true, true, true, true);
-        RenderSystem.enableBlend();
-        RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
-        RenderSystem.blendEquation(GL32.GL_MAX);
+        GlStateManager._depthMask(false);
+        GlStateManager._colorMask(ColorTargetState.WRITE_ALL);
+        GlStateManager._enableBlend();
+        GlStateManager._blendFuncSeparate(GL11.GL_ONE, GL11.GL_ONE, GL11.GL_ONE, GL11.GL_ONE);
+        GL14.glBlendEquation(GL32.GL_MAX);
 
-        var far =  Minecraft.getInstance().gameRenderer.getDepthFar();
+        var far =  Minecraft.getInstance().gameRenderer.getGameRenderState().levelRenderState.cameraRenderState.depthFar;
 
         if (GlCompat.SUPPORTS_DSA)
         {
@@ -187,8 +191,8 @@ public class ClrwlOitFramebuffers
         else
         {
             GL32.glDrawBuffers(DEPTH_RANGE_DRAW_BUFFERS);
-            RenderSystem.clearColor(-far, -far, 0, 0);
-            RenderSystem.clear(GL32.GL_COLOR_BUFFER_BIT, false);
+            GL11.glClearColor(-far, -far, 0, 0);
+            GlStateManager._clear(GL32.GL_COLOR_BUFFER_BIT);
         }
     }
 
@@ -205,11 +209,11 @@ public class ClrwlOitFramebuffers
         GlStateManager._glBindFramebuffer(GL32.GL_FRAMEBUFFER, coeffsFbo);
 
         // No depth writes, but we'll still use the depth test
-        RenderSystem.depthMask(false);
-        RenderSystem.colorMask(true, true, true, true);
-        RenderSystem.enableBlend();
-        RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
-        RenderSystem.blendEquation(GL32.GL_FUNC_ADD);
+        GlStateManager._depthMask(false);
+        GlStateManager._colorMask(ColorTargetState.WRITE_ALL);
+        GlStateManager._enableBlend();
+        GlStateManager._blendFuncSeparate(GL11.GL_ONE, GL11.GL_ONE, GL11.GL_ONE, GL11.GL_ONE);
+        GL14.glBlendEquation(GL32.GL_FUNC_ADD);
 
         if (GlCompat.SUPPORTS_DSA)
         {
@@ -223,8 +227,8 @@ public class ClrwlOitFramebuffers
         else
         {
             GL32.glDrawBuffers(renderTransmittanceDrawBuffers);
-            RenderSystem.clearColor(0, 0, 0, 0);
-            RenderSystem.clear(GL32.GL_COLOR_BUFFER_BIT, false);
+            GL11.glClearColor(0, 0, 0, 0);
+            GlStateManager._clear(GL32.GL_COLOR_BUFFER_BIT);
         }
 
         return true;
@@ -242,10 +246,10 @@ public class ClrwlOitFramebuffers
 //        }
 //
 //        // Only write to depth, not color.
-//        RenderSystem.depthMask(true);
+//        GlStateManager._depthMask(true);
 //        RenderSystem.colorMask(false, false, false, false);
-//        RenderSystem.disableBlend();
-//        RenderSystem.depthFunc(GL32.GL_ALWAYS);
+//        GlStateManager._disableBlend();
+//        GlStateManager._depthFunc(GL32.GL_ALWAYS);
 //
 //        if (GlCompat.SUPPORTS_DSA)
 //        {
@@ -270,11 +274,11 @@ public class ClrwlOitFramebuffers
         GlStateManager._glBindFramebuffer(GL32.GL_FRAMEBUFFER, mainFbo);
 
         // No depth writes, but we'll still use the depth test
-        RenderSystem.depthMask(false);
-        RenderSystem.colorMask(true, true, true, true);
-        RenderSystem.enableBlend();
-        RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
-        RenderSystem.blendEquation(GL32.GL_FUNC_ADD);
+        GlStateManager._depthMask(false);
+        GlStateManager._colorMask(ColorTargetState.WRITE_ALL);
+        GlStateManager._enableBlend();
+        GlStateManager._blendFuncSeparate(GL11.GL_ONE, GL11.GL_ONE, GL11.GL_ONE, GL11.GL_ONE);
+        GL14.glBlendEquation(GL32.GL_FUNC_ADD);
 
         if (GlCompat.SUPPORTS_DSA)
         {
@@ -288,8 +292,8 @@ public class ClrwlOitFramebuffers
         else
         {
             GL32.glDrawBuffers(accumulateDrawBuffers);
-            RenderSystem.clearColor(0, 0, 0, 0);
-            RenderSystem.clear(GL32.GL_COLOR_BUFFER_BIT, false);
+            GL11.glClearColor(0, 0, 0, 0);
+            GlStateManager._clear(GL32.GL_COLOR_BUFFER_BIT);
         }
     }
 
@@ -304,8 +308,8 @@ public class ClrwlOitFramebuffers
         // depthMask = true: OIT stuff renders on top of other transparent stuff.
         // depthMask = false: other transparent stuff renders on top of OIT stuff.
         // If Neo gets wavelet OIT we can use their hooks to be correct with everything.
-        RenderSystem.depthMask(true);
-        RenderSystem.colorMask(true, true, true, true);
+        GlStateManager._depthMask(true);
+        GlStateManager._colorMask(ColorTargetState.WRITE_ALL);
 
         BlendMode blendMode;
 
@@ -332,13 +336,13 @@ public class ClrwlOitFramebuffers
 
         if (blendMode == null)
         {
-            RenderSystem.disableBlend();
+            GlStateManager._disableBlend();
         }
         else
         {
-            RenderSystem.enableBlend();
-            RenderSystem.blendFuncSeparate(blendMode.srcRgb(), blendMode.dstRgb(), blendMode.srcAlpha(), blendMode.dstAlpha());
-            RenderSystem.blendEquation(GL32.GL_FUNC_ADD);
+            GlStateManager._enableBlend();
+            GlStateManager._blendFuncSeparate(blendMode.srcRgb(), blendMode.dstRgb(), blendMode.srcAlpha(), blendMode.dstAlpha());
+            GL14.glBlendEquation(GL32.GL_FUNC_ADD);
         }
 
         for (var entry : bufferBlendOverrides)
@@ -354,12 +358,12 @@ public class ClrwlOitFramebuffers
             }
         }
 
-        RenderSystem.depthFunc(GL32.GL_ALWAYS);
+        GlStateManager._depthFunc(GL32.GL_ALWAYS);
 
         for (int i = 0; i < accumulate.length; i++)
         {
             ClrwlSamplers.getAccumulate(i).makeActive();
-            RenderSystem.bindTexture(accumulate[i]);
+            GlStateManager._bindTexture(accumulate[i]);
         }
 
         var ranks = properties.getOitCoeffRanks(programGroup);
@@ -440,7 +444,7 @@ public class ClrwlOitFramebuffers
             depthBounds = GL32.glGenTextures();
 
             GlTextureUnit.T0.makeActive();
-            RenderSystem.bindTexture(0);
+            GlStateManager._bindTexture(0);
 
             GL32.glBindTexture(GL32.GL_TEXTURE_2D, depthBounds);
             GL32.glTexImage2D(GL32.GL_TEXTURE_2D, 0, GL32.GL_RG32F, width, height, 0, GL46.GL_RGBA, GL46.GL_BYTE, 0);

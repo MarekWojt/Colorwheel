@@ -5,7 +5,7 @@ import dev.djefrey.colorwheel.ColorwheelBufferBuilder;
 import dev.djefrey.colorwheel.accessors.flw10000.UniversalMeshEmitterAccessor;
 import net.fabricmc.fabric.api.renderer.v1.material.RenderMaterial;
 import net.irisshaders.iris.vertices.BlockSensitiveBufferBuilder;
-import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.rendertype.RenderType;
 import org.jetbrains.annotations.UnknownNullability;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;

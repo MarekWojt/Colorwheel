@@ -24,17 +24,17 @@ public enum ShaderType {
         this.glEnum = glEnum;
     }
 
-    public Optional<dev.engine_room.flywheel.backend.gl.shader.ShaderType> toFlw()
+    public Optional<com.zurrtum.create.client.flywheel.backend.gl.shader.ShaderType> toFlw()
     {
         switch (this)
         {
             case VERTEX ->
             {
-                return Optional.of(dev.engine_room.flywheel.backend.gl.shader.ShaderType.VERTEX);
+                return Optional.of(com.zurrtum.create.client.flywheel.backend.gl.shader.ShaderType.VERTEX);
             }
             case FRAGMENT ->
             {
-                return Optional.of(dev.engine_room.flywheel.backend.gl.shader.ShaderType.FRAGMENT);
+                return Optional.of(com.zurrtum.create.client.flywheel.backend.gl.shader.ShaderType.FRAGMENT);
             }
             case GEOMETRY ->
             {
@@ -42,7 +42,7 @@ public enum ShaderType {
             }
             case COMPUTE ->
             {
-                return Optional.of(dev.engine_room.flywheel.backend.gl.shader.ShaderType.COMPUTE);
+                return Optional.of(com.zurrtum.create.client.flywheel.backend.gl.shader.ShaderType.COMPUTE);
             }
         }
 

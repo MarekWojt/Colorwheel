@@ -1,7 +1,7 @@
 package dev.djefrey.colorwheel.shaderpack;
 
 import dev.djefrey.colorwheel.engine.ClrwlBlendModeOverride;
-import dev.engine_room.flywheel.api.material.Transparency;
+import com.zurrtum.create.client.flywheel.api.material.Transparency;
 import net.irisshaders.iris.shaderpack.loading.ProgramId;
 import org.jetbrains.annotations.Nullable;
 

@@ -4,9 +4,9 @@ import dev.djefrey.colorwheel.Colorwheel;
 import dev.djefrey.colorwheel.util.Utils;
 import dev.djefrey.colorwheel.compile.GlslFragmentOutput;
 import dev.djefrey.colorwheel.engine.ClrwlOitAccumulateOverride;
-import dev.engine_room.flywheel.backend.glsl.ShaderSources;
-import dev.engine_room.flywheel.backend.glsl.SourceComponent;
-import dev.engine_room.flywheel.backend.glsl.generate.*;
+import com.zurrtum.create.client.flywheel.backend.glsl.ShaderSources;
+import com.zurrtum.create.client.flywheel.backend.glsl.SourceComponent;
+import com.zurrtum.create.client.flywheel.backend.glsl.generate.*;
 
 import java.util.Collection;
 import java.util.List;

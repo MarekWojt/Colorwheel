@@ -1,7 +1,7 @@
 package dev.djefrey.colorwheel.mixin.flw.v10006;
 
 import dev.djefrey.colorwheel.accessors.flw10006.MeshEmitterManagerAccessor;
-import dev.engine_room.flywheel.lib.model.SimpleModel;
+import com.zurrtum.create.client.flywheel.lib.model.SimpleModel;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(targets = "dev.engine_room.flywheel.lib.model.baked.MeshEmitterManager")
+@Mixin(targets = "com.zurrtum.create.client.flywheel.lib.model.baked.MeshEmitterManager")
 public class MeshEmitterManagerMixin implements MeshEmitterManagerAccessor
 {
     @Unique

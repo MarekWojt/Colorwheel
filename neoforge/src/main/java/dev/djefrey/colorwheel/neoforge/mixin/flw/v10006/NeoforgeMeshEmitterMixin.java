@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import dev.djefrey.colorwheel.ColorwheelBufferBuilder;
-import dev.engine_room.flywheel.api.model.Model;
+import com.zurrtum.create.client.flywheel.api.model.Model;
 import net.irisshaders.iris.vertices.BlockSensitiveBufferBuilder;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-@Mixin(targets = "dev.engine_room.flywheel.lib.model.baked.NeoforgeMeshEmitter")
+@Mixin(targets = "com.zurrtum.create.client.flywheel.lib.model.baked.NeoforgeMeshEmitter")
 @Pseudo
 public abstract class NeoforgeMeshEmitterMixin implements BlockSensitiveBufferBuilder, VertexConsumer
 {

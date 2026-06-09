@@ -1,9 +1,9 @@
 package dev.djefrey.colorwheel.compile.oit;
 
 import dev.djefrey.colorwheel.Colorwheel;
-import dev.engine_room.flywheel.backend.glsl.SourceComponent;
-import dev.engine_room.flywheel.backend.glsl.generate.GlslBuilder;
-import dev.engine_room.flywheel.backend.glsl.generate.GlslUniform;
+import com.zurrtum.create.client.flywheel.backend.glsl.SourceComponent;
+import com.zurrtum.create.client.flywheel.backend.glsl.generate.GlslBuilder;
+import com.zurrtum.create.client.flywheel.backend.glsl.generate.GlslUniform;
 
 import java.util.Collection;
 import java.util.List;

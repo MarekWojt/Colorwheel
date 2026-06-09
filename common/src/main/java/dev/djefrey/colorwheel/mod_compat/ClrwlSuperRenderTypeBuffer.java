@@ -4,7 +4,7 @@ package dev.djefrey.colorwheel.mod_compat;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import dev.djefrey.colorwheel.accessors.iris.FullyBufferedMultiBufferSourceAccessor;
-import net.createmod.catnip.render.SuperRenderTypeBuffer;
+import com.zurrtum.create.client.catnip.render.SuperRenderTypeBuffer;
 import net.irisshaders.batchedentityrendering.impl.FullyBufferedMultiBufferSource;
 import net.irisshaders.batchedentityrendering.impl.TransparencyType;
 import net.irisshaders.iris.shaderpack.materialmap.WorldRenderingSettings;

@@ -1,6 +1,6 @@
 package dev.djefrey.colorwheel.util;
 
-import dev.engine_room.flywheel.api.material.Transparency;
+import com.zurrtum.create.client.flywheel.api.material.Transparency;
 import net.irisshaders.iris.gl.blending.BlendMode;
 import net.irisshaders.iris.gl.blending.BlendModeFunction;
 

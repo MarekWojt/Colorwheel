@@ -1,8 +1,8 @@
 package dev.djefrey.colorwheel.compile;
 
 import dev.djefrey.colorwheel.ShaderType;
-import dev.engine_room.flywheel.backend.glsl.ShaderSources;
-import dev.engine_room.flywheel.backend.glsl.SourceComponent;
+import com.zurrtum.create.client.flywheel.backend.glsl.ShaderSources;
+import com.zurrtum.create.client.flywheel.backend.glsl.SourceComponent;
 import net.irisshaders.iris.helpers.StringPair;
 import net.minecraft.resources.ResourceLocation;
 

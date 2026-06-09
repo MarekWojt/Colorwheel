@@ -1,9 +1,9 @@
 package dev.djefrey.colorwheel.mixin.flw;
 
 import dev.djefrey.colorwheel.engine.ClrwlEngine;
-import dev.engine_room.flywheel.api.visual.EntityVisual;
-import dev.engine_room.flywheel.api.visualization.VisualizationContext;
-import dev.engine_room.flywheel.impl.visualization.storage.EntityStorage;
+import com.zurrtum.create.client.flywheel.api.visual.EntityVisual;
+import com.zurrtum.create.client.flywheel.api.visualization.VisualizationContext;
+import com.zurrtum.create.client.flywheel.impl.visualization.storage.EntityStorage;
 import net.irisshaders.iris.shaderpack.materialmap.NamespacedId;
 import net.irisshaders.iris.shaderpack.materialmap.WorldRenderingSettings;
 import net.minecraft.core.registries.BuiltInRegistries;

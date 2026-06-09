@@ -1,9 +1,9 @@
 package dev.djefrey.colorwheel.engine;
 
-import dev.engine_room.flywheel.api.instance.Instance;
-import dev.engine_room.flywheel.api.instance.InstanceType;
-import dev.engine_room.flywheel.api.model.Model;
-import dev.engine_room.flywheel.backend.engine.embed.Environment;
+import com.zurrtum.create.client.flywheel.api.instance.Instance;
+import com.zurrtum.create.client.flywheel.api.instance.InstanceType;
+import com.zurrtum.create.client.flywheel.api.model.Model;
+import com.zurrtum.create.client.flywheel.backend.engine.embed.Environment;
 
 public record ClrwlInstancerKey<I extends Instance>(ClrwlInstanceVisual visual, Environment environment, InstanceType<I> type, Model model, int bias)
 {

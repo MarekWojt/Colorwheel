@@ -11,4 +11,7 @@ rootProject.name = 'Colorwheel'
 
 include 'common'
 include 'fabric'
-include 'neoforge'
+// 'neoforge' is intentionally not included: there is no Create-NeoForge for 26.x to
+// compile against yet. The module is kept in the tree as a future basis. Re-add it here
+// (and set enabled_platforms = fabric,neoforge) once a 26.x NeoForge backend exists.
+// include 'neoforge'

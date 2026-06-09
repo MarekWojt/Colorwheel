@@ -1,7 +1,7 @@
 package dev.djefrey.colorwheel.compile.transform;
 
 import dev.djefrey.colorwheel.compile.ClrwlPipelineCompiler;
-import dev.engine_room.flywheel.api.material.Transparency;
+import com.zurrtum.create.client.flywheel.api.material.Transparency;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import net.irisshaders.iris.gl.blending.AlphaTest;
 import net.irisshaders.iris.gl.texture.TextureType;

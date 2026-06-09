@@ -2,7 +2,7 @@ package dev.djefrey.colorwheel.engine;
 
 import dev.djefrey.colorwheel.ClrwlXplat;
 import dev.djefrey.colorwheel.Version;
-import dev.engine_room.flywheel.api.material.*;
+import com.zurrtum.create.client.flywheel.api.material.*;
 import net.minecraft.util.Mth;
 
 // Materials are unpacked in "flywheel:flywheel/internal/packed_material.glsl"

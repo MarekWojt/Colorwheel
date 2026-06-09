@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Coerce;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(targets = "dev.engine_room.flywheel.lib.model.baked.BakedModelBufferer")
+@Mixin(targets = "com.zurrtum.create.client.flywheel.lib.model.baked.BakedModelBufferer")
 @Pseudo
 public class BakedModelBuffererMixin
 {

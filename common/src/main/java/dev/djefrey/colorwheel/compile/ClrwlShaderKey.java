@@ -1,10 +1,10 @@
 package dev.djefrey.colorwheel.compile;
 
 import dev.djefrey.colorwheel.engine.uniform.ClrwlFrameUniforms;
-import dev.engine_room.flywheel.api.instance.InstanceType;
-import dev.engine_room.flywheel.api.material.*;
-import dev.engine_room.flywheel.backend.compile.ContextShader;
-import dev.engine_room.flywheel.lib.util.ResourceUtil;
+import com.zurrtum.create.client.flywheel.api.instance.InstanceType;
+import com.zurrtum.create.client.flywheel.api.material.*;
+import com.zurrtum.create.client.flywheel.backend.compile.ContextShader;
+import com.zurrtum.create.client.flywheel.lib.util.ResourceUtil;
 
 public record ClrwlShaderKey(InstanceType<?> instanceType,
                              MaterialShaders material,

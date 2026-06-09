@@ -5,7 +5,7 @@ import dev.djefrey.colorwheel.engine.ClrwlEngine;
 import dev.djefrey.colorwheel.engine.ClrwlInstanceVisual;
 import dev.djefrey.colorwheel.engine.embed.EmbeddedEnvironment;
 import dev.djefrey.colorwheel.mod_compat.ClrwlModCompat;
-import dev.engine_room.flywheel.backend.engine.LightStorage;
+import com.zurrtum.create.client.flywheel.backend.engine.LightStorage;
 import dev.ryanhcode.sable.neoforge.compatibility.flywheel.SableFlywheelLightStorage;
 import net.irisshaders.iris.helpers.StringPair;
 import net.minecraft.core.Vec3i;

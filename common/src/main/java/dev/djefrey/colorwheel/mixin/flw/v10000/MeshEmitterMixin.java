@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-@Mixin(targets = "dev.engine_room.flywheel.lib.model.baked.MeshEmitter", remap = false)
+@Mixin(targets = "com.zurrtum.create.client.flywheel.lib.model.baked.MeshEmitter", remap = false)
 @Pseudo
 public abstract class MeshEmitterMixin implements VertexConsumer, BlockSensitiveBufferBuilder, MeshEmitterAccessor
 {
@@ -101,8 +101,8 @@ public abstract class MeshEmitterMixin implements VertexConsumer, BlockSensitive
         {
             if (colorwheel$emitterPrepare == null)
             {
-                var consumerClazz = Class.forName("dev.engine_room.flywheel.lib.model.baked.BakedModelBufferer$ResultConsumer");
-                var emitterClazz = Class.forName("dev.engine_room.flywheel.lib.model.baked.MeshEmitter");
+                var consumerClazz = Class.forName("com.zurrtum.create.client.flywheel.lib.model.baked.BakedModelBufferer$ResultConsumer");
+                var emitterClazz = Class.forName("com.zurrtum.create.client.flywheel.lib.model.baked.MeshEmitter");
                 colorwheel$emitterPrepare = emitterClazz.getMethod("prepare", consumerClazz);
             }
 

@@ -1,6 +1,6 @@
 package dev.djefrey.colorwheel.engine.uniform;
 
-import dev.engine_room.flywheel.lib.util.ExtraMemoryOps;
+import com.zurrtum.create.client.flywheel.lib.util.ExtraMemoryOps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.Level;

@@ -2,9 +2,9 @@ package dev.djefrey.colorwheel.compile;
 
 import com.google.common.collect.ImmutableList;
 import dev.djefrey.colorwheel.compile.oit.ClrwlOitPrograms;
-import dev.engine_room.flywheel.backend.gl.GlCompat;
-import dev.engine_room.flywheel.backend.glsl.GlslVersion;
-import dev.engine_room.flywheel.backend.glsl.ShaderSources;
+import com.zurrtum.create.client.flywheel.backend.gl.GlCompat;
+import com.zurrtum.create.client.flywheel.backend.glsl.GlslVersion;
+import com.zurrtum.create.client.flywheel.backend.glsl.ShaderSources;
 import net.irisshaders.iris.shaderpack.ShaderPack;
 import net.irisshaders.iris.shaderpack.materialmap.NamespacedId;
 

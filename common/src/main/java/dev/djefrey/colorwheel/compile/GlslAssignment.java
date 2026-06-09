@@ -1,6 +1,6 @@
 package dev.djefrey.colorwheel.compile;
 
-import dev.engine_room.flywheel.backend.glsl.generate.GlslBuilder;
+import com.zurrtum.create.client.flywheel.backend.glsl.generate.GlslBuilder;
 
 public class GlslAssignment implements GlslBuilder.Declaration
 {

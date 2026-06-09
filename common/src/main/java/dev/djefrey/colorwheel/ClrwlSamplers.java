@@ -1,6 +1,6 @@
 package dev.djefrey.colorwheel;
 
-import dev.engine_room.flywheel.backend.gl.GlTextureUnit;
+import com.zurrtum.create.client.flywheel.backend.gl.GlTextureUnit;
 
 public class ClrwlSamplers
 {

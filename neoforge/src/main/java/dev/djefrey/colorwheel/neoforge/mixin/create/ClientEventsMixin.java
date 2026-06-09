@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.simibubi.create.foundation.events.ClientEvents;
 import dev.djefrey.colorwheel.Colorwheel;
 import dev.djefrey.colorwheel.mod_compat.PonderCompat;
-import net.createmod.catnip.render.SuperRenderTypeBuffer;
+import com.zurrtum.create.client.catnip.render.SuperRenderTypeBuffer;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;

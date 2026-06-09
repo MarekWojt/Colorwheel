@@ -1,9 +1,9 @@
 package dev.djefrey.colorwheel.compile;
 
 import dev.djefrey.colorwheel.shaderpack.ClrwlShaderProperties;
-import dev.engine_room.flywheel.backend.glsl.GlslVersion;
-import dev.engine_room.flywheel.backend.glsl.ShaderSources;
-import dev.engine_room.flywheel.backend.glsl.SourceComponent;
+import com.zurrtum.create.client.flywheel.backend.glsl.GlslVersion;
+import com.zurrtum.create.client.flywheel.backend.glsl.ShaderSources;
+import com.zurrtum.create.client.flywheel.backend.glsl.SourceComponent;
 import net.irisshaders.iris.helpers.StringPair;
 import net.irisshaders.iris.pipeline.IrisRenderingPipeline;
 import net.irisshaders.iris.shaderpack.programs.ProgramSet;

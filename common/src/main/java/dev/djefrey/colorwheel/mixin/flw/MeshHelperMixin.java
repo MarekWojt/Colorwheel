@@ -2,8 +2,8 @@ package dev.djefrey.colorwheel.mixin.flw;
 
 import com.mojang.blaze3d.vertex.MeshData;
 import dev.djefrey.colorwheel.engine.IrisTerrainVertexView;
-import dev.engine_room.flywheel.lib.memory.MemoryBlock;
-import dev.engine_room.flywheel.lib.model.SimpleQuadMesh;
+import com.zurrtum.create.client.flywheel.lib.memory.MemoryBlock;
+import com.zurrtum.create.client.flywheel.lib.model.SimpleQuadMesh;
 import net.irisshaders.iris.vertices.IrisVertexFormats;
 import org.lwjgl.system.MemoryUtil;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.nio.ByteBuffer;
 
-@Mixin(targets = "dev.engine_room.flywheel.lib.model.baked.MeshHelper")
+@Mixin(targets = "com.zurrtum.create.client.flywheel.lib.model.baked.MeshHelper")
 public class MeshHelperMixin
 {
     @Inject(method = "blockVerticesToMesh",

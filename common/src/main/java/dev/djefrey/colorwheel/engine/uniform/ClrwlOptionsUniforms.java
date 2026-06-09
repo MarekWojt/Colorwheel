@@ -1,6 +1,6 @@
 package dev.djefrey.colorwheel.engine.uniform;
 
-import dev.engine_room.flywheel.backend.engine.uniform.UniformBuffer;
+import com.zurrtum.create.client.flywheel.backend.engine.uniform.UniformBuffer;
 import net.minecraft.client.Options;
 
 public final class ClrwlOptionsUniforms extends UniformWriter

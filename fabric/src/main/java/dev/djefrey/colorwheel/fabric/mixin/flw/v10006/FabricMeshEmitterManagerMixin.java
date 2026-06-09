@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(targets = "dev.engine_room.flywheel.lib.model.baked.FabricMeshEmitterManager")
+@Mixin(targets = "com.zurrtum.create.client.flywheel.lib.model.baked.FabricMeshEmitterManager")
 @Pseudo
 public abstract class FabricMeshEmitterManagerMixin implements VertexConsumer, BlockSensitiveBufferBuilder
 {

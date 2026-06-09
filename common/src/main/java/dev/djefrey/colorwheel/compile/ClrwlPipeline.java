@@ -1,7 +1,7 @@
 package dev.djefrey.colorwheel.compile;
 
 import dev.djefrey.colorwheel.ShaderType;
-import dev.engine_room.flywheel.backend.glsl.GlslVersion;
+import com.zurrtum.create.client.flywheel.backend.glsl.GlslVersion;
 
 import java.util.ArrayList;
 import java.util.List;

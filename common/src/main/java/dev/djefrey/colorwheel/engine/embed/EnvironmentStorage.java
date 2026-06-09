@@ -1,7 +1,7 @@
 package dev.djefrey.colorwheel.engine.embed;
 
 import dev.djefrey.colorwheel.Colorwheel;
-import dev.engine_room.flywheel.backend.engine.CpuArena;
+import com.zurrtum.create.client.flywheel.backend.engine.CpuArena;
 import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ReferenceSet;
 

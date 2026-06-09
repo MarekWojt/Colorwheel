@@ -1,6 +1,6 @@
 package dev.djefrey.colorwheel.compile;
 
-import dev.engine_room.flywheel.backend.glsl.SourceComponent;
+import com.zurrtum.create.client.flywheel.backend.glsl.SourceComponent;
 
 import java.util.Collection;
 import java.util.List;

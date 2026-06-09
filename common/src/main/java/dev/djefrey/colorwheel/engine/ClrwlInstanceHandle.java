@@ -1,8 +1,8 @@
 package dev.djefrey.colorwheel.engine;
 
-import dev.engine_room.flywheel.api.instance.Instance;
-import dev.engine_room.flywheel.api.instance.InstanceHandle;
-import dev.engine_room.flywheel.backend.engine.AbstractInstancer;
+import com.zurrtum.create.client.flywheel.api.instance.Instance;
+import com.zurrtum.create.client.flywheel.api.instance.InstanceHandle;
+import com.zurrtum.create.client.flywheel.backend.engine.AbstractInstancer;
 import org.jetbrains.annotations.UnknownNullability;
 
 public class ClrwlInstanceHandle<I extends Instance> implements InstanceHandle

@@ -2,7 +2,7 @@ package dev.djefrey.colorwheel.engine.uniform;
 
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
-import dev.engine_room.flywheel.backend.engine.uniform.UniformBuffer;
+import com.zurrtum.create.client.flywheel.backend.engine.uniform.UniformBuffer;
 
 public final class ClrwlFogUniforms extends UniformWriter
 {

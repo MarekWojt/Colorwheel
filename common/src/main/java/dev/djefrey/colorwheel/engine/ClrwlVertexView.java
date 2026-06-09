@@ -1,7 +1,7 @@
 package dev.djefrey.colorwheel.engine;
 
-import dev.engine_room.flywheel.lib.math.DataPacker;
-import dev.engine_room.flywheel.lib.vertex.AbstractVertexView;
+import com.zurrtum.create.client.flywheel.lib.math.DataPacker;
+import com.zurrtum.create.client.flywheel.lib.vertex.AbstractVertexView;
 import org.lwjgl.system.MemoryUtil;
 
 public class ClrwlVertexView extends AbstractVertexView

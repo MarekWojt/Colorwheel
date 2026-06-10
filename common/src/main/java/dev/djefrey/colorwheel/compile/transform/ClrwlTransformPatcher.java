@@ -119,6 +119,10 @@ public class ClrwlTransformPatcher
 				replaceVec2WithVariableDimension(root, "mc_midTexCoord", "clrwl_vertexMidTexCoord");
 				replaceVec2WithVariableDimension(root, "mc_Entity", "clrwl_vertexEntity");
 
+				// mc_chunkFade is a newer vanilla terrain attribute (chunk fade-in factor). Flywheel
+				// geometry is not terrain and does not fade in, so it is fully visible (1.0).
+				root.replaceReferenceExpressions(transformer, "mc_chunkFade", "1.0");
+
 				root.replaceReferenceExpressions(transformer, "gl_MultiTexCoord0", "vec4(flw_vertexTexCoord, 0.0, 1.0)");
 				root.replaceReferenceExpressions(transformer, "gl_MultiTexCoord1",  "vec4(flw_vertexLight * 240.0, 0.0, 1.0)");
 				root.replaceReferenceExpressions(transformer, "gl_MultiTexCoord2",  "vec4(flw_vertexLight * 240.0, 0.0, 1.0)");

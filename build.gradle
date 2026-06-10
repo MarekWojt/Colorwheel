@@ -20,6 +20,7 @@ subprojects {
     }
 
     repositories {
+        maven { url = "https://maven.fabricmc.net/" }       // Fabric API modules
         maven { url = "https://api.modrinth.com/maven" }   // Create-Fly, Iris, Sodium
         maven { url = "https://maven.createmod.net" }       // Create / Catnip / Ponder family
         maven { url = 'https://maven.blamejared.com' }      // misc

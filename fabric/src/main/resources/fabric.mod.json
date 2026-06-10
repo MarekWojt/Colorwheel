@@ -27,6 +27,7 @@
     "colorwheel.mixins.json",
     "colorwheel.fabric.mixins.json"
   ],
+  "accessWidener": "colorwheel.classtweaker",
   "depends": {
     "fabricloader": ">=0.19.2",
     "minecraft": ">=26.1- <26.2-",

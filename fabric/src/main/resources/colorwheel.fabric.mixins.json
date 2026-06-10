@@ -11,8 +11,7 @@
   "mixins": [
     "flw.v10000.BakedModelBuffererMixin",
     "flw.v10000.UniversalMeshEmitterMixin",
-    "flw.v10006.FabricMeshEmitterManagerMixin",
-    "ponder.FabricPonderClientMixin"
+    "flw.v10006.FabricMeshEmitterManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

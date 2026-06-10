@@ -1,9 +1,21 @@
 // Ensure :common is configured before we reference its source set output below.
 evaluationDependsOn(':common')
 
+loom {
+    // Same 26.1 access widener as :common (its file lives in common's resources and is bundled
+    // into the fabric jar via the jar task below; declared at runtime in fabric.mod.json).
+    accessWidenerPath = file("${rootProject.projectDir}/common/src/main/resources/colorwheel.classtweaker")
+}
+
 dependencies {
     implementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
     implementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
+
+    // The full fabric-api bundle does not expose its (JiJ'd) modules on the compile classpath,
+    // so the specific modules Colorwheel compiles against are referenced individually.
+    compileOnly fabricApi.module("fabric-command-api-v2", rootProject.fabric_api_version)
+    compileOnly fabricApi.module("fabric-rendering-v1", rootProject.fabric_api_version)
+    compileOnly fabricApi.module("fabric-renderer-api-v1", rootProject.fabric_api_version)
 
     // Loader-agnostic core. Its compiled classes + resources (assets, colorwheel.mixins.json)
     // are bundled into the Fabric jar below.

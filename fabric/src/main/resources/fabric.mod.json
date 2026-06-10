@@ -25,7 +25,10 @@
   },
   "mixins": [
     "colorwheel.mixins.json",
-    "colorwheel.fabric.mixins.json"
+    {
+      "config": "colorwheel.fabric.mixins.json",
+      "environment": "client"
+    }
   ],
   "accessWidener": "colorwheel.classtweaker",
   "depends": {

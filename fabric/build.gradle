@@ -2,28 +2,42 @@
 evaluationDependsOn(':common')
 
 loom {
+    // Fabric API ships split main/client jars; client-only classes (ClientCommands,
+    // WorldRenderEvents, the renderer API) are only reachable from a client source set.
+    splitEnvironmentSourceSets()
+
     // Same 26.1 access widener as :common (its file lives in common's resources and is bundled
     // into the fabric jar via the jar task below; declared at runtime in fabric.mod.json).
     accessWidenerPath = file("${rootProject.projectDir}/common/src/main/resources/colorwheel.classtweaker")
+
+    mods {
+        "colorwheel" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
 }
 
 dependencies {
     implementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
     implementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
 
-    // The full fabric-api bundle does not expose its (JiJ'd) modules on the compile classpath,
-    // so the specific modules Colorwheel compiles against are referenced individually.
-    compileOnly fabricApi.module("fabric-command-api-v2", rootProject.fabric_api_version)
-    compileOnly fabricApi.module("fabric-rendering-v1", rootProject.fabric_api_version)
-    compileOnly fabricApi.module("fabric-renderer-api-v1", rootProject.fabric_api_version)
+    // The full fabric-api bundle does not expose its (JiJ'd) modules on the compile classpath;
+    // these client modules are referenced individually and only by the client source set.
+    clientCompileOnly fabricApi.module("fabric-command-api-v2", rootProject.fabric_api_version)
+    clientCompileOnly fabricApi.module("fabric-rendering-v1", rootProject.fabric_api_version)
+    clientCompileOnly fabricApi.module("fabric-renderer-api-v1", rootProject.fabric_api_version)
 
     // Loader-agnostic core. Its compiled classes + resources (assets, colorwheel.mixins.json)
     // are bundled into the Fabric jar below.
     implementation project(':common')
 
-    // Flywheel/Ponder/Catnip live inside Create-Fly for 26.1.
+    // Flywheel/Ponder/Catnip live inside Create-Fly for 26.1. The client source set's render
+    // mixins reference these, so they are exposed to both source sets.
     compileOnly "maven.modrinth:create-fly:${create_fly_version}"
     compileOnly "maven.modrinth:iris:${iris_version}"
+    clientCompileOnly "maven.modrinth:create-fly:${create_fly_version}"
+    clientCompileOnly "maven.modrinth:iris:${iris_version}"
 
     // Dev-environment runtime mods (not bundled into the release jar). 26.1 does not remap,
     // so these are plain runtime dependencies discovered by the loader in dev.
@@ -48,9 +62,11 @@ processResources {
 // Bundle the loader-agnostic core (classes + resources) into the Fabric mod jar. 26.1 is
 // unobfuscated, so no remapping/transformation is needed between the modules.
 tasks.named('jar', Jar) {
+    from sourceSets.client.output
     from project(':common').sourceSets.main.output
 }
 
 tasks.named('sourcesJar', Jar) {
+    from sourceSets.client.allSource
     from project(':common').sourceSets.main.allSource
 }

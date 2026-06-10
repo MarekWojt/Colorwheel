@@ -5,7 +5,6 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
-    "iris.FullyBufferedMultiBufferSourceMixin",
     "mc.BufferBuilderMixin",
     "mc.LevelRendererMixin",
     "mc.OptionsMixin",
@@ -31,8 +30,7 @@
     "iris.ShaderPackSourceNamesMixin",
     "iris.ShadowRendererMixin",
     "iris.ShadowRenderTargetsMixin",
-    "iris.StandardMacrosMixin",
-    "ponder.PonderClientMixin"
+    "iris.StandardMacrosMixin"
   ],
   "injectors": {
     "defaultRequire": 1

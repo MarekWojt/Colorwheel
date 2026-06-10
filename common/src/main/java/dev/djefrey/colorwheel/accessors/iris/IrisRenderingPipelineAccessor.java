@@ -1,6 +1,7 @@
 package dev.djefrey.colorwheel.accessors.iris;
 
 import dev.djefrey.colorwheel.shaderpack.ClrwlProgramGroup;
+import com.mojang.blaze3d.opengl.GlTexture;
 import net.irisshaders.iris.gl.framebuffer.GlFramebuffer;
 import net.irisshaders.iris.pipeline.IrisRenderingPipeline;
 import net.irisshaders.iris.shaderpack.programs.ProgramSource;
@@ -36,7 +37,7 @@ public interface IrisRenderingPipelineAccessor
 			{
 				RenderTargets targets = this.colorwheel$getGbuffersRenderTargets();
 
-				depthTexture = targets.getDepthTexture();
+				depthTexture = ((GlTexture) targets.getDepthTexture()).glId();
 				width = targets.getCurrentWidth();
 				height = targets.getCurrentHeight();
 			}
@@ -44,7 +45,7 @@ public interface IrisRenderingPipelineAccessor
 			{
 				ShadowRenderTargets targets = this.colorwheel$getShadowRenderTargets();
 
-				depthTexture = targets.getDepthTexture().getTextureId();
+				depthTexture = ((GlTexture) targets.getDepthTexture()).glId();
 				width = targets.getResolution();
 				height = targets.getResolution();
 			}

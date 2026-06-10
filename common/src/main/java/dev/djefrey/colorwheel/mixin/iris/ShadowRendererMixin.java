@@ -15,6 +15,7 @@ import net.irisshaders.iris.uniforms.CameraUniforms;
 import net.irisshaders.iris.uniforms.CapturedRenderingState;
 import net.irisshaders.iris.uniforms.custom.CustomUniforms;
 import net.minecraft.client.Camera;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import org.joml.Vector3d;
@@ -47,10 +48,10 @@ public abstract class ShadowRendererMixin implements ShadowRendererAccessor
     }
 
     @Inject(
-            method = "renderShadows(Lnet/irisshaders/iris/mixin/LevelRendererAccessor;Lnet/minecraft/client/Camera;)V",
+            method = "renderShadows(Lnet/irisshaders/iris/mixin/LevelRendererAccessor;Lnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/state/level/CameraRenderState;)V",
             at = @At(value = "CONSTANT", args = "stringValue=build blockentities")
     )
-    private void injectRenderShadows(LevelRendererAccessor levelRenderer, Camera playerCamera, CallbackInfo ci)
+    private void injectRenderShadows(LevelRendererAccessor levelRenderer, Camera playerCamera, CameraRenderState renderState, CallbackInfo ci)
     {
         if (colorwheel$shouldRenderShadow && Colorwheel.getSafeFlw().isColorwheelCurrentBackend())
         {
@@ -65,10 +66,10 @@ public abstract class ShadowRendererMixin implements ShadowRendererAccessor
     }
 
     @Inject(
-            method = "renderShadows(Lnet/irisshaders/iris/mixin/LevelRendererAccessor;Lnet/minecraft/client/Camera;)V",
+            method = "renderShadows(Lnet/irisshaders/iris/mixin/LevelRendererAccessor;Lnet/minecraft/client/Camera;Lnet/minecraft/client/renderer/state/level/CameraRenderState;)V",
             at = @At(value = "CONSTANT", args = "stringValue=translucent terrain")
     )
-    private void injectRenderShadowsTranslucent(LevelRendererAccessor levelRenderer, Camera playerCamera, CallbackInfo ci)
+    private void injectRenderShadowsTranslucent(LevelRendererAccessor levelRenderer, Camera playerCamera, CameraRenderState renderState, CallbackInfo ci)
     {
         if (shouldRenderTranslucent && colorwheel$shouldRenderShadow && Colorwheel.getSafeFlw().isColorwheelCurrentBackend())
         {

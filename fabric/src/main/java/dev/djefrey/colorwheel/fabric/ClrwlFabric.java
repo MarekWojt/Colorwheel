@@ -27,18 +27,32 @@ public final class ClrwlFabric implements ModInitializer
 
     public static boolean hasFlywheel()
     {
-        return FabricLoader.getInstance().isModLoaded("flywheel");
+        // For 26.1 Flywheel is bundled inside Create-Fly (mod id "create"); there is no standalone
+        // "flywheel" mod. Accept either.
+        var loader = FabricLoader.getInstance();
+        return loader.isModLoaded("flywheel") || loader.isModLoaded("create");
     }
 
     public static boolean hasPonder()
     {
-        return FabricLoader.getInstance().isModLoaded("ponder");
+        // Ponder is likewise bundled inside Create-Fly.
+        var loader = FabricLoader.getInstance();
+        return loader.isModLoaded("ponder") || loader.isModLoaded("create");
     }
 
     public static boolean isFlywheelVersionSupported()
     {
+        var flw = FabricLoader.getInstance().getModContainer("flywheel");
+
+        // When Flywheel is provided by Create-Fly there is no standalone "flywheel" mod to version
+        // check; this port targets Create-Fly's bundled Flywheel directly, so accept it.
+        if (flw.isEmpty())
+        {
+            return true;
+        }
+
         var dependencies = FabricLoader.getInstance().getModContainer(Colorwheel.MOD_ID).get().getMetadata().getDependencies();
-        var flwVersion = FabricLoader.getInstance().getModContainer("flywheel").get().getMetadata().getVersion();
+        var flwVersion = flw.get().getMetadata().getVersion();
 
         for (var dep : dependencies)
         {
@@ -48,7 +62,6 @@ public final class ClrwlFabric implements ModInitializer
             }
         }
 
-        // Should never happen
-        throw new RuntimeException("Flywheel is not a dependency");
+        return true;
     }
 }

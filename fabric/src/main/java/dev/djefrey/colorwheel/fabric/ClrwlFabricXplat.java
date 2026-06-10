@@ -62,7 +62,10 @@ public class ClrwlFabricXplat implements ClrwlXplat
 
         if (modContainer.isEmpty())
         {
-            return null;
+            // Flywheel is bundled inside Create-Fly (no standalone "flywheel" mod). Report a modern
+            // version so the version-gated MixinPlugin enables Colorwheel's core Flywheel mixins.
+            flwVersion = new Version(1, 0, 6);
+            return flwVersion;
         }
 
         String version = modContainer.get().getMetadata().getVersion().getFriendlyString();

@@ -7,6 +7,7 @@ import net.minecraft.client.Camera;
 import net.minecraft.client.Options;
 import net.minecraft.client.multiplayer.ClientLevel;
 import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 import org.joml.Vector3d;
 
 public class ClrwlSafeFlwNoop implements ClrwlSafeFlw
@@ -36,7 +37,7 @@ public class ClrwlSafeFlwNoop implements ClrwlSafeFlw
     }
 
     @Override
-    public void submitTranslucentRenderContext(ClientLevel level, Camera playerCamera, Matrix4f modelMatrix, Matrix4f projectionMatrix, float tickDelta)
+    public void submitTranslucentRenderContext(ClientLevel level, Camera playerCamera, Matrix4fc modelMatrix, Matrix4f projectionMatrix, float tickDelta)
     {
 
     }

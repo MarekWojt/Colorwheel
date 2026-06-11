@@ -7,6 +7,7 @@ import net.minecraft.client.Camera;
 import net.minecraft.client.Options;
 import net.minecraft.client.multiplayer.ClientLevel;
 import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 import org.joml.Vector3d;
 
 public interface ClrwlSafeFlw
@@ -15,5 +16,5 @@ public interface ClrwlSafeFlw
     void updateOptionsUniform(Options options);
     void onIrisPipelineDestroy(IrisRenderingPipeline pipeline);
     void submitShadowRenderContext(ClientLevel level, Camera playerCamera, Vector3d cameraPos, float tickDelta, ShadowRenderingPhase phase);
-    void submitTranslucentRenderContext(ClientLevel level, Camera playerCamera, Matrix4f modelMatrix, Matrix4f projectionMatrix, float tickDelta);
+    void submitTranslucentRenderContext(ClientLevel level, Camera playerCamera, Matrix4fc modelMatrix, Matrix4f projectionMatrix, float tickDelta);
 }

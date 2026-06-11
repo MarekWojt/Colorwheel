@@ -17,6 +17,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.client.multiplayer.ClientLevel;
 import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 import org.joml.Vector3d;
 
 public class ClrwlSafeFlwImpl implements ClrwlSafeFlw
@@ -66,7 +67,7 @@ public class ClrwlSafeFlwImpl implements ClrwlSafeFlw
     }
 
     @Override
-    public void submitTranslucentRenderContext(ClientLevel level, Camera playerCamera, Matrix4f modelMatrix, Matrix4f projectionMatrix, float tickDelta)
+    public void submitTranslucentRenderContext(ClientLevel level, Camera playerCamera, Matrix4fc modelMatrix, Matrix4f projectionMatrix, float tickDelta)
     {
         VisualizationManager manager = VisualizationManager.get(level);
 

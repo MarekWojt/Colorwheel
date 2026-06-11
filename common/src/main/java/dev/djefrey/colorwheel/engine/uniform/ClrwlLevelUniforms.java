@@ -1,5 +1,6 @@
 package dev.djefrey.colorwheel.engine.uniform;
 
+import com.mojang.blaze3d.platform.Lighting;
 import com.zurrtum.create.client.flywheel.api.backend.RenderContext;
 import com.zurrtum.create.client.flywheel.backend.engine.uniform.LevelUniforms;
 import com.zurrtum.create.client.flywheel.backend.engine.uniform.UniformBuffer;
@@ -39,8 +40,11 @@ public final class ClrwlLevelUniforms extends UniformWriter
 		ptr = writeVec4(ptr, ARGB.redFloat(skyColor), ARGB.greenFloat(skyColor), ARGB.blueFloat(skyColor), 1f);
 		ptr = writeVec4(ptr, ARGB.redFloat(cloudColor), ARGB.greenFloat(cloudColor), ARGB.blueFloat(cloudColor), 1f);
 
-		// Light directions are now dynamic state on Flywheel's LevelUniforms; guard against an
-		// unset value (Colorwheel may run before Flywheel populated it).
+		// Flywheel's LIGHT_DIRECTION is a shared global pointing at whichever Lighting.setupFor() ran
+		// last. By the time Colorwheel runs (deep inside Iris's level pass) an items/UI setupFor may
+		// have repointed it, which zeroes the diffuse on every default (ENTITY-cardinal-lit) material —
+		// i.e. most kinetic/instanced geometry. Re-point it at the LEVEL lighting before reading.
+		LevelUniforms.set(Lighting.Entry.LEVEL);
 		float[] lightDir = LevelUniforms.LIGHT_DIRECTION != null ? LevelUniforms.LIGHT_DIRECTION : new float[6];
 		ptr = writeVec3(ptr, lightDir[0], lightDir[1], lightDir[2]);
 		ptr = writeVec3(ptr, lightDir[3], lightDir[4], lightDir[5]);

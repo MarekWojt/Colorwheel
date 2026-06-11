@@ -5,7 +5,7 @@ import com.zurrtum.create.client.flywheel.lib.model.SimpleModel;
 import dev.djefrey.colorwheel.ColorwheelBufferBuilder;
 import dev.djefrey.colorwheel.accessors.MeshEmitterManagerAccessor;
 import dev.djefrey.colorwheel.engine.ClrwlBakeExtension;
-import net.irisshaders.iris.shaderpack.materialmap.WorldRenderingSettings;
+import net.irisshaders.iris.Iris;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.Unique;
@@ -38,7 +38,9 @@ public class MeshEmitterManagerMixin implements MeshEmitterManagerAccessor
     @Inject(method = "prepare", at = @At("HEAD"), require = 0, remap = false)
     private void colorwheel$enterBake(CallbackInfo ci)
     {
-        colorwheel$enteredBake = WorldRenderingSettings.INSTANCE.getBlockStateIds() != null;
+        // Live "Iris pack actively rendering" signal — NOT getBlockStateIds() != null, which stays
+        // set after shaders are toggled off and would force TERRAIN buffers Iris no longer fills.
+        colorwheel$enteredBake = Iris.isPackInUseQuick();
         if (colorwheel$enteredBake)
         {
             ClrwlBakeExtension.enter();
@@ -70,7 +72,7 @@ public class MeshEmitterManagerMixin implements MeshEmitterManagerAccessor
     @Inject(method = "getBuffer", at = @At("RETURN"), require = 0, remap = false)
     private void colorwheel$tagBuffer(CallbackInfoReturnable<BufferBuilder> cir)
     {
-        if (WorldRenderingSettings.INSTANCE.getBlockStateIds() == null)
+        if (!Iris.isPackInUseQuick())
         {
             return;
         }

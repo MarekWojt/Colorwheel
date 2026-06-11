@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.zurrtum.create.client.flywheel.lib.model.baked.VanillinMeshEmitterManager;
 import dev.djefrey.colorwheel.accessors.MeshEmitterManagerAccessor;
+import net.irisshaders.iris.Iris;
 import net.irisshaders.iris.shaderpack.materialmap.WorldRenderingSettings;
 import net.irisshaders.iris.vertices.ExtendedDataHelper;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
@@ -33,8 +34,10 @@ public class BakedModelBuffererMixin
     {
         BlockState state = original.call(level, pos);
 
+        // Only stamp metadata while an Iris pack is actively rendering (matches the TERRAIN format
+        // forcing); getBlockStateIds() stays non-null after a shader toggle, so it can't be the gate.
         var ids = WorldRenderingSettings.INSTANCE.getBlockStateIds();
-        if (ids != null)
+        if (Iris.isPackInUseQuick() && ids != null)
         {
             FluidState fluidState = state.getFluidState();
             byte renderType = fluidState.isEmpty()

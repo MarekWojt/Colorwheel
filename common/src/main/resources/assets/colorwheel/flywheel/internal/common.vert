@@ -177,6 +177,51 @@ void _clrwl_main(FlwInstance instance, uint stableInstanceID, uint baseVertex)
 
     flw_vertexNormal = normalize(flw_vertexNormal);
 
+#ifndef CLRWL_IS_FALLBACK
+    // Gap G enhancement: feed Flywheel's smooth LUT world-light into the lightmap under shaders, so
+    // instanced/baked geometry (cogwheels, contraptions) gets vertex-smooth world lighting instead of
+    // the coarse per-instance / per-baked-block value. AO + shading stay the shaderpack's job here
+    // (the fallback block below bakes them itself, which is why this is non-fallback only).
+    #ifndef HAS_SABLE
+    {
+        FlwLightAo _clrwl_smoothLight;
+        if (flw_light(flw_vertexPos.xyz, flw_vertexNormal, _clrwl_smoothLight))
+        {
+            flw_vertexLight = _clrwl_smoothLight.light;
+        }
+    }
+    #else
+    {
+        uint _clrwl_sceneId = 0;
+        vec4 _clrwl_lightPos;
+        ivec3 _clrwl_renderOrigin;
+
+        #ifdef FLW_EMBEDDED
+            _clrwl_renderOrigin = flw_renderOrigin;
+            _clrwl_sceneId = flw_vertexLightingSceneId;
+            _clrwl_lightPos = flw_vertexLightingPos;
+            if (_clrwl_sceneId != 0)
+            {
+                _clrwl_renderOrigin = ivec3(0);
+            }
+        #else
+            _clrwl_renderOrigin = flw_renderOrigin;
+            _clrwl_lightPos = flw_vertexPos;
+        #endif
+
+        FlwLightAo _clrwl_smoothLight;
+        if (flw_light(_clrwl_sceneId, _clrwl_lightPos.xyz, flw_vertexNormal, _clrwl_renderOrigin, _clrwl_smoothLight))
+        {
+            flw_vertexLight = _clrwl_smoothLight.light;
+        }
+
+        #ifdef FLW_EMBEDDED
+            flw_vertexLight.y *= flw_skyLightScale;
+        #endif
+    }
+    #endif
+#endif
+
 #ifdef CLRWL_IS_FALLBACK
     #ifndef HAS_SABLE
         FlwLightAo light;

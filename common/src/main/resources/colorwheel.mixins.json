@@ -13,9 +13,12 @@
     "mc.RenderSystemMixin"
   ],
   "mixins": [
+    "flw.BakedModelBuffererMixin",
     "flw.BlockEntityStorageMixin",
     "flw.EntityStorageMixin",
     "flw.LateInitMixin",
+    "flw.MeshEmitterManagerMixin",
+    "flw.MeshEmitterMixin",
     "flw.MeshHelperMixin",
     "flw.VisualizationManagerImplMixin",
     "iris.BlendModeOverrideMixin",

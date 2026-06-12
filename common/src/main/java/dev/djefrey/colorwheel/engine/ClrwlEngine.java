@@ -4,6 +4,7 @@ import dev.djefrey.colorwheel.Colorwheel;
 import dev.djefrey.colorwheel.ExtendedEngine;
 import dev.djefrey.colorwheel.accessors.iris.ProgramSetAccessor;
 import dev.djefrey.colorwheel.compile.ClrwlInstancedPrograms;
+import dev.djefrey.colorwheel.compile.ClrwlShaderSources;
 import dev.djefrey.colorwheel.compile.oit.ClrwlOitPrograms;
 import dev.djefrey.colorwheel.engine.embed.EnvironmentStorage;
 import dev.djefrey.colorwheel.engine.uniform.ClrwlUniforms;
@@ -18,7 +19,6 @@ import com.zurrtum.create.client.flywheel.api.model.Model;
 import com.zurrtum.create.client.flywheel.api.task.Plan;
 import com.zurrtum.create.client.flywheel.api.visualization.VisualEmbedding;
 import com.zurrtum.create.client.flywheel.api.visualization.VisualizationContext;
-import com.zurrtum.create.client.flywheel.backend.compile.FlwPrograms;
 import com.zurrtum.create.client.flywheel.backend.engine.LightStorage;
 import com.zurrtum.create.client.flywheel.backend.engine.embed.Environment;
 import com.zurrtum.create.client.flywheel.backend.gl.GlStateTracker;
@@ -29,6 +29,7 @@ import net.irisshaders.iris.pipeline.IrisRenderingPipeline;
 import net.irisshaders.iris.shaderpack.ShaderPack;
 import net.irisshaders.iris.shaderpack.materialmap.NamespacedId;
 import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
@@ -73,7 +74,10 @@ public class ClrwlEngine implements ExtendedEngine
 		var programSet = pack.getProgramSet(dimension);
 		var isFallback = (((ProgramSetAccessor) programSet).colorwheel$isFallbackMode());
 
-		this.drawManager = drawManagerFactory.build(FlwPrograms.SOURCES, pack, dimension, isFallback);
+		// Use a Colorwheel-aware source set that remembers its own last-known-good shaders, so a
+		// resource reload that transiently drops our pack (e.g. a mid-game Sodium filter change)
+		// can't brick the engine until restart. See ClrwlShaderSources.
+		this.drawManager = drawManagerFactory.build(new ClrwlShaderSources(Minecraft.getInstance().getResourceManager()), pack, dimension, isFallback);
 		this.sqrMaxOriginDistance = maxOriginDistance * maxOriginDistance;
 		this.environmentStorage = new EnvironmentStorage();
 		this.lightStorage = Colorwheel.getModCompat().makeLightStorage(level);

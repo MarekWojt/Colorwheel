@@ -305,5 +305,14 @@ void _clrwl_main(FlwInstance instance, uint stableInstanceID, uint baseVertex)
         clrwl_overlayColor = vec4(0.0);
     }
 
+#ifdef CLRWL_IS_FALLBACK
+    // Flywheel geometry must not be subject to the shaderpack's vanilla block-id-driven vertex
+    // effects (foliage waving, material recoloring). The entity attribute is not meaningfully set
+    // for instanced/baked geometry, so it holds garbage that randomly lands in a waving id range
+    // (e.g. BSL waved small cogwheels like grass). Force the "ordinary block" id 0 -- exactly what
+    // unlisted terrain blocks get -- so the pack treats this as a normal, non-waving block.
+    clrwl_vertexEntity = vec2(0.0);
+#endif
+
     _clrwl_shader_main();
 }

@@ -5,7 +5,8 @@
   "name": "Colorwheel for Create Fly",
   "description": "Allows you to use Iris Shaders with Flywheel",
   "authors": [
-    "djefrey"
+    "djefrey",
+    "MarekWojt"
   ],
   "contact": {
     "homepage": "https://djefrey.github.io/colorwheel/",

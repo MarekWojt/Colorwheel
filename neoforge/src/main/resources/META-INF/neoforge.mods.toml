@@ -8,7 +8,7 @@ modId = "colorwheel"
 version = "${version}"
 displayName = "Colorwheel for Create Fly"
 displayURL = "https://djefrey.github.io/colorwheel/"
-authors = "djefrey"
+authors = "djefrey, MarekWojt"
 description = '''
 Allows you to use Iris Shaders with Flywheel
 '''

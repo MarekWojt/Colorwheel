@@ -35,6 +35,7 @@ The [Colorwheel Patcher](https://github.com/djefrey/Colorwheel-Patcher) mod can 
 
 ### Credits
 
+- **djefrey** : Author of the original Colorwheel, which this fork is based on
 - **Jozufozu & PepperCode1** : Author and maintainers of Flywheel and Vanillin
 - **leon-o** : Author of Iris Flywheel Compat
 - **IMS** : Lead developer of Iris

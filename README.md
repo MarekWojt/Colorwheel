@@ -1,5 +1,5 @@
 <div align="center">
-<img src=".github/logo.png" alt="Original logo by jnix, edited by djefrey" width="250">
+<img src=".github/logo.png" alt="Colorwheel for Create Fly logo" width="250">
 <h1>Colorwheel for Create Fly</h1>
 </div>
 <br>

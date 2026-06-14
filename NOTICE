@@ -17,6 +17,7 @@ text is in the LICENSE file.
 "Colorwheel for Create Fly" is a fork of "Colorwheel" by djefrey
 (https://github.com/djefrey/Colorwheel). The upstream project, and the portions
 of this fork derived from it, are licensed under the MIT license; that license
-and djefrey's original copyright notice are preserved in the LICENSE-MIT file.
+and djefrey's original copyright notice are preserved in the licenses/ directory
+(see licenses/Colorwheel-LICENSE and licenses/Flywheel-LICENSE).
 Those MIT-licensed portions are relicensed under the AGPL-3.0 for this combined
 work as permitted by the MIT license.

@@ -43,7 +43,7 @@ The [Colorwheel Patcher](https://github.com/djefrey/Colorwheel-Patcher) mod can 
 
 ### License
 
-**This is a fork.** "Colorwheel for Create Fly" is based on the upstream project [Colorwheel by djefrey](https://github.com/djefrey/Colorwheel), Copyright © 2025 djefrey, which is licensed under the **MIT** license. All of the original code this fork is based on is, and remains, available from upstream under the MIT license; that license is preserved in [`LICENSE-MIT`](LICENSE-MIT).
+**This is a fork.** "Colorwheel for Create Fly" is based on the upstream project [Colorwheel by djefrey](https://github.com/djefrey/Colorwheel), Copyright © 2025 djefrey, which is licensed under the **MIT** license. All of the original code this fork is based on is, and remains, available from upstream under the MIT license; that license, together with the MIT notice for the Flywheel-derived code, is preserved in the [`licenses/`](licenses) directory.
 
 "Colorwheel for Create Fly" as a whole is licensed under the **GNU Affero General Public License version 3** (AGPL-3.0-only); see [`LICENSE`](LICENSE), with copyright holders listed in [`NOTICE`](NOTICE). You are free to read, distribute and modify the code under the terms of that license.  
 This does **not** apply to the shaderpack patches provided in the Releases section.

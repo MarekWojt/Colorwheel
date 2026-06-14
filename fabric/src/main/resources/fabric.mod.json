@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "id": "colorwheel",
   "version": "${version}",
-  "name": "Colorwheel",
+  "name": "Colorwheel for Create Fly",
   "description": "Allows you to use Iris Shaders with Flywheel",
   "authors": [
     "djefrey"
   ],
   "contact": {
     "homepage": "https://djefrey.github.io/colorwheel/",
-    "sources": "https://github.com/djefrey/Colorwheel",
-    "issues": "https://github.com/djefrey/Colorwheel/issues"
+    "sources": "https://github.com/MarekWojt/Colorwheel",
+    "issues": "https://github.com/MarekWojt/Colorwheel/issues"
   },
-  "license": "MIT",
+  "license": "AGPL-3.0-only",
   "icon": "logo.png",
   "environment": "*",
   "entrypoints": {

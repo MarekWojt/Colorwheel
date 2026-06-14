@@ -1,6 +1,6 @@
 <div align="center">
 <img src=".github/logo.png" alt="Original logo by jnix, edited by djefrey" width="250">
-<h1>Colorwheel</h1>
+<h1>Colorwheel for Create Fly</h1>
 </div>
 <br>
 
@@ -42,9 +42,11 @@ The [Colorwheel Patcher](https://github.com/djefrey/Colorwheel-Patcher) mod can 
 
 ### License
 
-All code in this repository is licensed under the **MIT** license. You are free to read, distribute and modify the code.  
+**This is a fork.** "Colorwheel for Create Fly" is based on the upstream project [Colorwheel by djefrey](https://github.com/djefrey/Colorwheel), Copyright © 2025 djefrey, which is licensed under the **MIT** license. All of the original code this fork is based on is, and remains, available from upstream under the MIT license; that license is preserved in [`LICENSE-MIT`](LICENSE-MIT).
+
+"Colorwheel for Create Fly" as a whole is licensed under the **GNU Affero General Public License version 3** (AGPL-3.0-only); see [`LICENSE`](LICENSE), with copyright holders listed in [`NOTICE`](NOTICE). You are free to read, distribute and modify the code under the terms of that license.  
 This does **not** apply to the shaderpack patches provided in the Releases section.
 
-This project is partially based on code from Flywheel, licensed under the MIT license.  
+The relicensing is permitted by the MIT license (which allows sublicensing) and is necessary because this fork links against [glsl-transformer](https://github.com/IrisShaders/glsl-transformer), which is itself licensed under the AGPL-3.0. Since the combined work incorporates AGPL-3.0 code, the fork as a whole must be distributed under the AGPL-3.0.
 
-This project uses glsl-transformer, licensed under the GNU Affero General Public License version 3. This may affect your ability to distribute Colorwheel.
+This project is also partially based on code from Flywheel, which is licensed under the MIT license.

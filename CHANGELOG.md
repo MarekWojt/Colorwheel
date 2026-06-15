@@ -1,3 +1,25 @@
+### 1.0.0
+
+First release of **Colorwheel for Create Fly**, a fork of
+[Colorwheel](https://github.com/djefrey/Colorwheel) by djefrey.
+
+- Ported to Minecraft 26.1 on Fabric (Java 25); runs against the Flywheel, Ponder
+  and Catnip bundled in Create (Create-Fly)
+- Relicensed under the AGPL-3.0 (required by glsl-transformer) — see `LICENSE` and
+  `NOTICE`; the retained upstream and Flywheel MIT notices live in `licenses/`
+- New logo
+- Fixed fallback-mode rendering of Flywheel geometry with shaderpacks that have no
+  Colorwheel support (e.g. cogwheels being deformed by the shaderpack's
+  foliage-waving)
+- More resilient to mid-game resource reloads (e.g. changing Sodium's texture
+  filtering) that could previously break rendering until a restart
+
+---
+
+_The entries below are the version history of the upstream project,
+[Colorwheel](https://github.com/djefrey/Colorwheel) by djefrey, up to 1.2.9 — the
+point from which this fork ("Colorwheel for Create Fly") was created._
+
 ### 1.2.9
 
 - Fixed IncompatibleClassChangeError crash on 1.20.1

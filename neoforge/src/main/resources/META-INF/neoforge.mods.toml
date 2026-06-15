@@ -7,7 +7,7 @@ license = "AGPL-3.0-only"
 modId = "colorwheel"
 version = "${version}"
 displayName = "Colorwheel for Create Fly"
-displayURL = "https://djefrey.github.io/colorwheel/"
+displayURL = "https://modrinth.com/project/colorwheel-for-create-fly"
 authors = "djefrey, MarekWojt"
 description = '''
 Allows you to use Iris Shaders with Flywheel

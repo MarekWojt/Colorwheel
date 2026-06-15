@@ -7,7 +7,7 @@
 ### About
 
 The goal of this project is to provide a [Flywheel](https://github.com/Engine-Room/Flywheel) backend that is compatible with [Iris](https://github.com/IrisShaders/Iris) 1.x.  
-It does so by providing new shader programs to be provided by shaderpacks. Documentation is available here: https://djefrey.github.io/colorwheel/.
+It does so by providing new shader programs to be provided by shaderpacks. Documentation for the upstream Colorwheel shader standard, which this fork follows, is available here: https://djefrey.github.io/colorwheel/.
 
 This project started as an attempt to port [Iris Flywheel Compat](https://github.com/leon-o/iris-flw-compat/) from Flywheel 0.6 to 1.0.  
 However, with the amount of changes made to Flywheel, I decided to start from scratch.
@@ -30,8 +30,8 @@ Colorwheel, instead, implements an extension to the Iris shader standard. This m
 To use this mod, you need to install Iris and a mod that includes Flywheel (like Create or Vanillin).  
 You also need to use a compatible shaderpack.  
 
-You can find Colorwheel releases in the [Releases](https://github.com/djefrey/Colorwheel/releases) section.  
-The [Colorwheel Patcher](https://github.com/djefrey/Colorwheel-Patcher) mod can be used to apply automatically patches for shaderpack I support myself. This is not required for shaderpacks supporting Colorwheel themselves.
+You can find Colorwheel for Create Fly releases on [Modrinth](https://modrinth.com/project/colorwheel-for-create-fly).  
+The [Colorwheel Patcher](https://github.com/djefrey/Colorwheel-Patcher) mod, maintained by djefrey, can be used to automatically apply patches for the shaderpacks that djefrey supports. This is not required for shaderpacks supporting Colorwheel themselves.
 
 ### Credits
 

@@ -8,7 +8,7 @@ modId = "colorwheel"
 version = "${version}"
 displayName = "Colorwheel for Create Fly"
 displayURL = "https://modrinth.com/project/colorwheel-for-create-fly"
-authors = "djefrey, MarekWojt"
+authors = "MarekWojt, djefrey"
 description = '''
 Allows you to use Iris Shaders with Flywheel
 '''
